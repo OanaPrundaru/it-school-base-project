@@ -1,5 +1,7 @@
 #include "Bibliotecă.h"
 #include <iostream>
+#include "Persoană.h"
+#include "Carte.h"
 
 void Biblioteca::Adaugă_carte(const std::string &Titlu, const std::string &Autor, const std::string &ISBN)
 {
@@ -11,7 +13,7 @@ void Biblioteca::Adaugă_persoană(const std::string &Nume, int ID)
     Listă_Membri.push_back(std::make_unique<Persoană>(Nume, ID));
 }
 
-Carte *Biblioteca::găsește_Carte(const std::string &ISBN)
+Carte *Biblioteca::găsește_Carte(const std::string &ISBN) const
 {
     for (auto &Carte : Inventar_Cărți)
     {
@@ -20,7 +22,8 @@ Carte *Biblioteca::găsește_Carte(const std::string &ISBN)
     }
     return nullptr;
 }
-Persoană *Biblioteca::găsește_Persoană(int ID)
+
+Persoană *Biblioteca::găsește_Persoană(int ID) const
 {
     for (auto &Persoană : Listă_Membri)
     {
@@ -34,20 +37,33 @@ bool Biblioteca::procesează_împrumut(int ID, const std::string &ISBN)
     Persoană *Persoană = găsește_Persoană(ID);
     Carte *Carte = găsește_Carte(ISBN);
 
-    if (Persoană && Carte && !Carte->statusÎmprumut())
+    if (Persoană != nullptr && Carte != nullptr)
     {
         Carte->setÎmprumutată(true);
         Persoană->Adaugă_carte(Carte);
         return true;
+    }
+    else
+    {
+        std::cout << "Eroare: Cartea este deja imprumutata de altcineva.\n";
     }
     return false;
 }
 
 void Biblioteca::afișează_toate_cărțile() const
 {
-    std::cout << "\n--- Inventar Bibliotecă! \n";
+    std::cout << "\n--- Listă cărți--- \n";
     for (const auto &Carte : Inventar_Cărți)
     {
         Carte->afișareDetalii();
+    }
+}
+
+void Biblioteca::afișează_toți_membrii() const
+{
+    std::cout << "\n--- LISTA MEMBRI ---\n";
+    for (const auto &Persoană : Listă_Membri)
+    {
+        Persoană->afișare_Activitate();
     }
 }
