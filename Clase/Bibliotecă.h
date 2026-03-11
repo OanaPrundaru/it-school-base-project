@@ -23,8 +23,8 @@ public:
     void afișează_toate_cărțile() const;
     void afișează_toți_membrii() const;
 
-    Carte *găsește_Carte() const;
-    Persoană *găsește_Persoană() const;
+    Carte *găsește_Carte(const std::string &ISBN) const;
+    Persoană *găsește_Persoană(int ID) const;
 };
 
 #endif;
