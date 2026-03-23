@@ -7,15 +7,15 @@ Carte::Carte(std::string Titlu, std::string Autor, std::string ISBN)
 std::string Carte::getTitlu() const { return Titlu; }
 std::string Carte::getAutor() const { return Autor; }
 std::string Carte::getISBN() const { return ISBN; }
-bool Carte::statusÎmprumut() const { return Este_împrumutată; }
+bool Carte::statusÎmprumut() const { return Este_imprumutata; }
 
-void Carte::setÎmprumutată(bool status)
+void Carte::setImprumutata(bool status)
 {
-    Este_împrumutată = status;
+    Este_imprumutata = status;
 }
 
-void Carte::afișareDetalii() const
+void Carte::afiaareDetalii() const
 {
     std::cout << "Titlu: " << Titlu << " |Autor: " << Autor << " |ISBN: "
-              << ISBN << " |Status: " << (Este_împrumutată ? " Împrumutată " : " Disponibilă ") << std::endl;
+              << ISBN << " |Status: " << (Este_imprumutata ? " Împrumutată " : " Disponibilă ") << std::endl;
 }
