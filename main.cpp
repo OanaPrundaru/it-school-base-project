@@ -13,10 +13,10 @@ int main()
     b.incarcaMembri("Membri.csv");
 
     std::cout << "Afiseaza inventar carti: " << std::endl;
-    b.afiseazaToateCartile();
+    b.afiseaza_toate_cartile();
 
     std::cout << "Afiseaza lista membri: " << std::endl;
-    b.afiseazaTotiMembri();
+    b.afiseaza_toti_membrii();
 
     return 0;
 }
