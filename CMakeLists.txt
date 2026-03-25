@@ -9,7 +9,10 @@ add_library(math_utils src/math_utils.cpp)
 target_include_directories(math_utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # ---- Main executable ----
-add_executable(cpp-dev main.cpp)
+add_executable(cpp-dev main.cpp
+Biblioteca.cpp
+Carte.cpp
+Persoana.cpp)
 target_link_libraries(cpp-dev PRIVATE math_utils)
 
 # ---- Unit Testing with Google Test ----

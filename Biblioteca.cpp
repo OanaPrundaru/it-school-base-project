@@ -11,7 +11,7 @@ void Biblioteca::Adauga_carte(const std::string &Titlu, const std::string &Autor
 
 void Biblioteca::Adauga_persoana(int ID, const std::string &Nume)
 {
-    Lista_Membri.push_back(std::make_unique<Persoana>(Nume, ID));
+    Lista_Membri.push_back(std::make_unique<Persoana>(ID, Nume));
     std::cout << "Persoana '" << Nume << "' (ID: " << ID << ") a fost inregistrata.\n";
 }
 
