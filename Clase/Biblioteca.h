@@ -1,6 +1,9 @@
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
 #include <vector>
 #include <memory>
 #include <string>
@@ -25,6 +28,9 @@ public:
 
     Carte *gaseste_Carte(const std::string &ISBN) const;
     Persoana *gaseste_Persoana(int ID) const;
+
+    void incarcaCarti(const std::string &numeFisier);
+    void incarcaMembri(const std::string &numeFisier);
 };
 
 #endif;

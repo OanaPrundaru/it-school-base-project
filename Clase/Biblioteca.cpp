@@ -3,7 +3,7 @@
 #include "Carte.h"
 #include <iostream>
 
-void Biblioteca::Adaugă_carte(const std::string &Titlu, const std::string &Autor, const std::string &ISBN)
+void Biblioteca::Adauga_carte(const std::string &Titlu, const std::string &Autor, const std::string &ISBN)
 {
     Inventar_Carti.push_back(std::make_unique<Carte>(Titlu, Autor, ISBN));
     std::cout << "Cartea '" << Titlu << "' a fost adaugata in inventar.\n";
@@ -34,7 +34,7 @@ Persoana *Biblioteca::gaseste_Persoana(int ID) const
     }
     return nullptr;
 }
-bool Biblioteca::proceseaza_împrumut(int ID, const std::string &ISBN)
+bool Biblioteca::proceseaza_imprumut(int ID, const std::string &ISBN)
 {
     Persoana *Persoana = gaseste_Persoana(ID);
     Carte *Carte = gaseste_Carte(ISBN);
@@ -61,11 +61,76 @@ void Biblioteca::afiseaza_toate_cartile() const
     }
 }
 
-void Biblioteca::afisează_toti_membrii() const
+void Biblioteca::afiseaza_toti_membrii() const
 {
     std::cout << "\n--- LISTA MEMBRI ---\n";
     for (const auto &Persoana : Lista_Membri)
     {
         Persoana->afisare_Activitate();
     }
+}
+
+void Biblioteca::incarcaCarti(const std::string &numeFisier)
+{
+    std::ifstream file(numeFisier);
+    if (!file.is_open())
+    {
+        std::cerr << "Eroare: Nu s-a putut deschide fisierul " << numeFisier << std::endl;
+        return;
+    }
+
+    std::string linie;
+    while (std::getline(file, linie))
+    {
+        std::stringstream ss(linie);
+        std::string idStr, titlu, autor;
+
+        if (std::getline(ss, idStr, ',') &&
+            std::getline(ss, titlu, ',') &&
+            std::getline(ss, autor))
+        {
+
+            try
+            {
+                this->Adauga_carte(std::string(idStr), titlu, autor);
+            }
+            catch (...)
+            {
+                continue; // Sarim peste liniile invalide
+            }
+        }
+    }
+    file.close();
+    std::cout << "Carti incarcate cu succes!" << std::endl;
+}
+
+void Biblioteca::incarcaMembri(const std::string &numeFisier)
+{
+    std::ifstream file(numeFisier);
+    if (!file.is_open())
+    {
+        std::cout << "Eroare: Nu s-a putut deschide fisierul " << numeFisier << std::endl;
+        return;
+    }
+
+    std::string linie;
+    while (std::getline(file, linie))
+    {
+        std::stringstream ss(linie);
+        std::string idStr, nume;
+
+        if (std::getline(ss, idStr, ',') && std::getline(ss, nume))
+        {
+            try
+            {
+                this->Adauga_persoana(std::string(idStr), nume);
+            }
+            catch (...)
+            {
+                continue;
+            }
+        }
+    }
+    file.close();
+    std::cout << "Membri incarcati cu succes!" << std::endl;
 }
