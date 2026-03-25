@@ -1,12 +1,13 @@
 #include "Persoana.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
-Persoană::Persoana(std::string Nume, int ID)
-    : Nume(Nume), ID(ID) {}
+Persoana::Persoana(int ID, std::string Nume)
+    : ID(ID), Nume(Nume) {}
 
-std::string Persoana::getNume() const { return Nume; }
 int Persoana::getID() const { return ID; }
+std::string Persoana::getNume() const { return Nume; }
 
 void Persoana::Adauga_carte(Carte *Carte)
 {

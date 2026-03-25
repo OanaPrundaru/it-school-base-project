@@ -9,14 +9,14 @@
 class Persoana
 {
 private:
-    std::string Nume;
     int ID;
-    std::vector<Carte *> Carti_împrumutate;
+    std::string Nume;
+    std::vector<Carte *> Carti_imprumutate;
 
 public:
-    Persoana(std::string Nume, int ID);
-    std::string getNume() const;
+    Persoana(int ID, std::string Nume);
     int getID() const;
+    std::string getNume() const;
 
     void Adauga_carte(Carte *Carte);
     void returneaza_Carte(const std::string &ISBN);

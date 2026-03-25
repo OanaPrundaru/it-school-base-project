@@ -18,7 +18,7 @@ private:
 
 public:
     void Adauga_carte(const std::string &titlu, const std::string &Autor, const std::string &ISBN);
-    void Adauga_persoana(const std::string &Nume, const int ID);
+    void Adauga_persoana(int ID, const std::string &Nume);
 
     bool proceseaza_imprumut(int ID, const std::string &ISBN);
     bool proceseaza_returnare(int ID, const std::string &ISBN);
@@ -33,4 +33,4 @@ public:
     void incarcaMembri(const std::string &numeFisier);
 };
 
-#endif;
+#endif

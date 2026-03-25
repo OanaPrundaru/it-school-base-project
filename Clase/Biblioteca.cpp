@@ -9,7 +9,7 @@ void Biblioteca::Adauga_carte(const std::string &Titlu, const std::string &Autor
     std::cout << "Cartea '" << Titlu << "' a fost adaugata in inventar.\n";
 }
 
-void Biblioteca::Adauga_persoana(const std::string &Nume, int ID)
+void Biblioteca::Adauga_persoana(int ID, const std::string &Nume)
 {
     Lista_Membri.push_back(std::make_unique<Persoana>(Nume, ID));
     std::cout << "Persoana '" << Nume << "' (ID: " << ID << ") a fost inregistrata.\n";
@@ -75,7 +75,7 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
     std::ifstream file(numeFisier);
     if (!file.is_open())
     {
-        std::cerr << "Eroare: Nu s-a putut deschide fisierul " << numeFisier << std::endl;
+        std::cout << "Eroare: Nu s-a putut deschide fisierul " << numeFisier << std::endl;
         return;
     }
 
@@ -83,20 +83,20 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
     while (std::getline(file, linie))
     {
         std::stringstream ss(linie);
-        std::string idStr, titlu, autor;
+        std::string ISBN, titlu, autor;
 
-        if (std::getline(ss, idStr, ',') &&
+        if (std::getline(ss, ISBN, ',') &&
             std::getline(ss, titlu, ',') &&
             std::getline(ss, autor))
         {
 
             try
             {
-                this->Adauga_carte(std::string(idStr), titlu, autor);
+                this->Adauga_carte(std::string(ISBN), titlu, autor);
             }
             catch (...)
             {
-                continue; // Sarim peste liniile invalide
+                continue;
             }
         }
     }
@@ -117,20 +117,25 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
     while (std::getline(file, linie))
     {
         std::stringstream ss(linie);
-        std::string idStr, nume;
+        std::string idStr;
+        std::string Nume;
 
-        if (std::getline(ss, idStr, ',') && std::getline(ss, nume))
+        if (std::getline(ss, idStr, ','))
         {
-            try
+            if (std::getline(ss, Nume))
             {
-                this->Adauga_persoana(std::string(idStr), nume);
-            }
-            catch (...)
-            {
-                continue;
+                try
+                {
+                    int ID = std::stoi(idStr);
+                    this->Adauga_persoana(ID, Nume);
+                }
+                catch (...)
+                {
+                    continue;
+                }
             }
         }
     }
     file.close();
-    std::cout << "Membri incarcati cu succes!" << std::endl;
+    std::cout << "Membri incarcati: " << Lista_Membri.size() << std::endl;
 }
