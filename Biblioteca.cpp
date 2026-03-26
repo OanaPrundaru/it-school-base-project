@@ -55,18 +55,22 @@ bool Biblioteca::proceseaza_imprumut(int ID, const std::string &ISBN)
 void Biblioteca::afiseaza_toate_cartile() const
 {
     std::cout << "\n--- Listă cărți--- \n";
-    for (const auto &Carte : Inventar_Carti)
+    for (const auto& c : Inventar_Carti)
     {
-        Carte->afisareDetalii();
+        std::cout << "ISBN: " << c->getISBN() << "|Titlu: " << c->getTitlu()
+        <<"|Autor: "<< c->getAutor() << "|Status: " << (c->statusImprumut()? 
+        "Imprumutata" : "Disponibila") << std::endl;
+        c->afisareDetalii();
     }
 }
 
 void Biblioteca::afiseaza_toti_membrii() const
 {
     std::cout << "\n--- LISTA MEMBRI ---\n";
-    for (const auto &Persoana : Lista_Membri)
-    {
-        Persoana->afisare_Activitate();
+    for (const auto &p : Lista_Membri)
+    {   
+        std::cout << "ID: " <<p->getID() << "|Nume: "<< p->getNume() << std::endl;
+        p->afisare_Activitate();
     }
 }
 
@@ -87,10 +91,8 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
 
         if (std::getline(ss, ISBN, ',') &&
             std::getline(ss, titlu, ',') &&
-            std::getline(ss, autor))
-        {
-            std::getline(ss, status);
-        }
+            std::getline(ss, autor,',') &&
+            std::getline(ss, status));
         {
 
             try
@@ -125,12 +127,9 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
     while (std::getline(file, linie))
     {
         std::stringstream ss(linie);
-        std::string idStr;
-        std::string Nume;
-
-        if (std::getline(ss, idStr, ','))
-        {
-            if (std::getline(ss, Nume))
+        std::string idStr, Nume;
+        
+        if (std::getline(ss, idStr, ',') && std::getline(ss, Nume))
             {
                 try
                 {
@@ -143,9 +142,9 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
                 }
             }
         }
-    }
     file.close();
     std::cout << "Membri incarcati: " << Lista_Membri.size() << std::endl;
+
 }
 
 void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)

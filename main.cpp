@@ -24,9 +24,6 @@ int main()
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
 
-        // if (optiune == 0)
-        //     break;
-
         switch (optiune)
         {
         case 1:
