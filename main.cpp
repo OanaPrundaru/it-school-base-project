@@ -24,8 +24,8 @@ int main()
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
 
-        if (optiune == 0)
-            break;
+        // if (optiune == 0)
+        //     break;
 
         switch (optiune)
         {
@@ -51,6 +51,12 @@ int main()
             b.Imprumuta_carte(idPersoana, isbnCarte);
             break;
         }
+        case 0:
+            b.salveaza_carti("Carti.csv");
+            b.salveaza_membri("Membri.csv");
+            std::cout << "Date salvate. La reverdere!\n";
+            exit(-1);
+
         default:
             std::cout << " Optiune invalida! \n";
             std::cin.clear();

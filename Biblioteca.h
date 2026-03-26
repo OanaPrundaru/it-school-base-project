@@ -33,6 +33,9 @@ public:
     void incarcaMembri(const std::string &numeFisier);
 
     void Imprumuta_carte(int ID, const std::string &ISBN);
+
+    void salveaza_carti(const std::string &numeFisier);
+    void salveaza_membri(const std::string &numeFisier);
 };
 
 #endif

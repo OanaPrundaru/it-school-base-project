@@ -1,20 +1,20 @@
-101,Dune,Frank Herbert
-102,1984,George Orwell
-103,Micul Print,Antoine de Saint-Exupery
-104,Fundatia,Isaac Asimov
-105,Hobbitul,J.R.R. Tolkien
-106,Ferma Animalelor,George Orwell
-107,Portretul lui Dorian Gray,Oscar Wilde
-108,Codul lui Da Vinci,Dan Brown
-109,Mandrie si Prejudecata,Jane Austen
-110,De veghe in lanul de secara,J.D. Salinger
-111,Strainul,Albert Camus
-112,Shining,Stephen King
-113,Marele Gatsby,F. Scott Fitzgerald
-114,Crima si Pedeapsa,Feodor Dostoievski
-115,In cautarea timpului pierdut,Marcel Proust
-116,Batranul si marea,Ernest Hemingway
-117,Un veac de singuratate,Gabriel Garcia Marquez
-118,Fahrenheit 451,Ray Bradbury
-119,Hotul de carti,Markus Zusak
-120,Alchimistul,Paulo Coelho
+101,Dune,Frank Herbert,0
+102,1984,George Orwell,1
+103,Micul Print,Antoine de Saint-Exupery,0
+104,Fundatia,Isaac Asimov,0
+105,Hobbitul,J.R.R. Tolkien,0
+106,Ferma Animalelor,George Orwell,1
+107,Portretul lui Dorian Gray,Oscar Wilde,0
+108,Codul lui Da Vinci,Dan Brown,1
+109,Mandrie si Prejudecata,Jane Austen,1
+110,De veghe in lanul de secara,J.D. Salinger,1
+111,Strainul,Albert Camus,0
+112,Shining,Stephen King,0
+113,Marele Gatsby,F. Scott Fitzgerald,0
+114,Crima si Pedeapsa,Feodor Dostoievski,0
+115,In cautarea timpului pierdut,Marcel Proust,0
+116,Batranul si marea,Ernest Hemingway,0
+117,Un veac de singuratate,Gabriel Garcia Marquez,1
+118,Fahrenheit 451,Ray Bradbury,0
+119,Hotul de carti,Markus Zusak,0
+120,Alchimistul,Paulo Coelho,0

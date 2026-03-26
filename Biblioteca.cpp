@@ -83,16 +83,24 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
     while (std::getline(file, linie))
     {
         std::stringstream ss(linie);
-        std::string ISBN, titlu, autor;
+        std::string ISBN, titlu, autor, status;
 
         if (std::getline(ss, ISBN, ',') &&
             std::getline(ss, titlu, ',') &&
             std::getline(ss, autor))
         {
+            std::getline(ss, status);
+        }
+        {
 
             try
             {
                 this->Adauga_carte(std::string(ISBN), titlu, autor);
+
+                if (status == "1")
+                {
+                    Inventar_Carti.back()->setImprumutata(true);
+                }
             }
             catch (...)
             {
@@ -180,5 +188,31 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
     else
     {
         std::cout << "ID Persoana sau ISBN incorect. " << std::endl;
+    }
+}
+
+void Biblioteca::salveaza_carti(const std::string &numeFisier)
+{
+    std::ofstream f(numeFisier);
+    if (f.is_open())
+    {
+        for (auto &c : Inventar_Carti)
+        {
+            f << c->getISBN() << "," << c->getTitlu() << "," << (c->statusImprumut() ? "1" : "0") << "\n";
+        }
+        f.close();
+    }
+}
+
+void Biblioteca::salveaza_membri(const std::string &numeFisier)
+{
+    std::ofstream f(numeFisier);
+    if (f.is_open())
+    {
+        for (auto &p : Lista_Membri)
+        {
+            f << p->getID() << "," << p->getNume() << "\n";
+        }
+        f.close();
     }
 }
