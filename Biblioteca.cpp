@@ -139,3 +139,46 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
     file.close();
     std::cout << "Membri incarcati: " << Lista_Membri.size() << std::endl;
 }
+
+void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
+{
+    Persoana *persoanaGasita = nullptr;
+    Carte *carteGasita = nullptr;
+
+    for (auto &p : Lista_Membri)
+    {
+        if (p->getID() == idPersoana)
+        {
+            persoanaGasita = p.get();
+            break;
+        }
+    }
+
+    for (auto &c : Inventar_Carti)
+    {
+        if (c->getISBN() == isbnCarte)
+        {
+            carteGasita = c.get();
+            break;
+        }
+    }
+
+    if (persoanaGasita && carteGasita)
+    {
+        if (!carteGasita->statusImprumut())
+        {
+            carteGasita->setImprumutata(true);
+            persoanaGasita->Adauga_carte(carteGasita);
+            std::cout << "SUCCES!" << std::endl;
+            std::cout << "Membrul: " << idPersoana << " a imprumtat cartea: " << carteGasita->getTitlu() << std::endl;
+        }
+        else
+        {
+            std::cout << " Cartea este deja imprumutata! " << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "ID Persoana sau ISBN incorect. " << std::endl;
+    }
+}
