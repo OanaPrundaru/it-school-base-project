@@ -20,6 +20,7 @@ int main()
         std::cout << " 1. Afiseaza toate cartile\n";
         std::cout << " 2. Afiseaza toti membrii \n";
         std::cout << " 3. Imprumuta o carte \n";
+        std::cout << " 4. Afiseaza carti disponibile\n";
         std::cout << " 0. Iesire\n";
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
@@ -48,6 +49,11 @@ int main()
             b.Imprumuta_carte(idPersoana, isbnCarte);
             break;
         }
+
+        case 4:
+            b.afiseaza_carti_disponibile();
+            break;
+
         case 0:
             b.salveaza_carti("Carti.csv");
             b.salveaza_membri("Membri.csv");
@@ -61,6 +67,7 @@ int main()
             break;
         }
     }
+
 
     return 0;
 }

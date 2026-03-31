@@ -92,7 +92,7 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
         if (std::getline(ss, ISBN, ',') &&
             std::getline(ss, titlu, ',') &&
             std::getline(ss, autor,',') &&
-            std::getline(ss, status));
+            std::getline(ss, status))
         {
 
             try
@@ -161,8 +161,7 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
         }
     }
 
-    for (auto &c : Inventar_Carti)
-    {
+    for (auto &c : Inventar_Carti){
         if (c->getISBN() == isbnCarte)
         {
             carteGasita = c.get();
@@ -213,5 +212,21 @@ void Biblioteca::salveaza_membri(const std::string &numeFisier)
             f << p->getID() << "," << p->getNume() << "\n";
         }
         f.close();
+    }
+}
+
+void Biblioteca::afiseaza_carti_disponibile(){
+    std::cout << "\n Cartile disponibile pentru imprumut sunt: \n";
+    bool gasit = false;
+
+    for(auto& c:Inventar_Carti){
+        if(c->statusImprumut() == false){
+            std::cout << "ISBN: " << c->getISBN() << "Titlu: " << c->getTitlu() << " Autor: " 
+            << c->getAutor() << std::endl;
+            gasit = true;
+        }
+    }
+    if(!gasit){
+        std::cout << " Ne pare rau, nu avem carti disponibile!" << std::endl;
     }
 }

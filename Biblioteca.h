@@ -36,6 +36,8 @@ public:
 
     void salveaza_carti(const std::string &numeFisier);
     void salveaza_membri(const std::string &numeFisier);
+
+    void afiseaza_carti_disponibile();
 };
 
 #endif
