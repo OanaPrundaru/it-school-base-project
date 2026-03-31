@@ -23,6 +23,7 @@ int main()
         std::cout << " 4. Afiseaza carti disponibile\n";
         std::cout << " 5. Adauga carti manual\n";
         std::cout << " 6. Sterge carti manual\n";
+        std::cout << " 7. Adauga membri manual\n";
         std::cout << " 0. Iesire\n";
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
@@ -62,6 +63,10 @@ int main()
 
         case 6:
             b.sterge_carte_manual();
+            break;
+
+        case 7:
+            b.adauga_persoana_manual();
             break;
 
         case 0:

@@ -52,7 +52,7 @@ void Biblioteca::adauga_persoana_manual(){
     int maxID = 0;
     for( const auto& p:Lista_Membri){
         if(p->getID() > maxID);
-            maxID = p->getID;
+            maxID = p->getID();
         }
        
     int ID_nou = maxID + 1;
