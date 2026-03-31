@@ -9,11 +9,64 @@ void Biblioteca::Adauga_carte(const std::string &Titlu, const std::string &Autor
     std::cout << "Cartea '" << Titlu << "' a fost adaugata in inventar.\n";
 }
 
+void Biblioteca::adauga_carte_manual(){
+    std::string Titlu, Autor, ISBN;
+    std::cout << "\n Adaugare carte noua. \n";
+    std::cout << "Introduceti ISBN: ";
+    std::cin >> ISBN;
+    std::cin.ignore();
+
+    std::cout << "Introduceti titlu: ";
+    std::getline(std::cin, Titlu);
+
+    std::cout <<"Introduceti autor: ";
+    std::getline(std::cin, Autor);
+
+    Inventar_Carti.push_back(std::make_unique <Carte> (Titlu, Autor, ISBN));
+    std::cout << "Cartea a fost adaugata cu succes! \n";
+}
+void Biblioteca::sterge_carte_manual(){
+    std::string ISBN_cautat;
+    std::cout << "Stergere carte!\n";
+    std::cout << "Introduceti ISBN-ul cartii pe care doriti sa o stergeti: ";
+    std::cin >> ISBN_cautat;
+    bool gasit = false;
+
+    for(auto it = Inventar_Carti.begin(); it != Inventar_Carti.end(); ++it){
+        if((*it)->getISBN() == ISBN_cautat){
+            Inventar_Carti.erase(it);
+            std::cout << " Cartea cu ISBN: " << ISBN_cautat <<" a fost stearsa!\n";
+            gasit = true;
+            break;
+        }
+    }
+}
+
 void Biblioteca::Adauga_persoana(int ID, const std::string &Nume)
 {
     Lista_Membri.push_back(std::make_unique<Persoana>(ID, Nume));
     std::cout << "Persoana '" << Nume << "' (ID: " << ID << ") a fost inregistrata.\n";
 }
+void Biblioteca::adauga_persoana_manual(){
+    std::string Nume;
+    int maxID = 0;
+    for( const auto& p:Lista_Membri){
+        if(p->getID() > maxID);
+            maxID = p->getID;
+        }
+       
+    int ID_nou = maxID + 1;
+
+    std::cout << "Inregistrare membru nou! \n";
+    std::cout << "ID: " << ID_nou << std::endl;
+    std::cout << "Introduceti numele si prenumele: ";
+    std::cin.ignore();
+    std::getline(std::cin, Nume);
+
+    Lista_Membri.push_back(std::make_unique<Persoana>(ID_nou, Nume));
+    std::cout << "Membrul: " << Nume << " a fost inregistrat cu succes!\n";    
+}
+
 
 Carte *Biblioteca::gaseste_Carte(const std::string &ISBN) const
 {
@@ -94,10 +147,10 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
             std::getline(ss, autor,',') &&
             std::getline(ss, status))
         {
-
+        
             try
             {
-                this->Adauga_carte(std::string(ISBN), titlu, autor);
+               Inventar_Carti.push_back(std::make_unique<Carte>(titlu, autor, ISBN));
 
                 if (status == "1")
                 {
@@ -196,7 +249,7 @@ void Biblioteca::salveaza_carti(const std::string &numeFisier)
     {
         for (auto &c : Inventar_Carti)
         {
-            f << c->getISBN() << "," << c->getTitlu() << "," << (c->statusImprumut() ? "1" : "0") << "\n";
+            f << c->getISBN() << "," << c->getTitlu() << "," << c->getAutor() << "," << (c->statusImprumut() ? "1" : "0") << "\n";
         }
         f.close();
     }

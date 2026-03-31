@@ -21,6 +21,8 @@ int main()
         std::cout << " 2. Afiseaza toti membrii \n";
         std::cout << " 3. Imprumuta o carte \n";
         std::cout << " 4. Afiseaza carti disponibile\n";
+        std::cout << " 5. Adauga carti manual\n";
+        std::cout << " 6. Sterge carti manual\n";
         std::cout << " 0. Iesire\n";
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
@@ -52,6 +54,14 @@ int main()
 
         case 4:
             b.afiseaza_carti_disponibile();
+            break;
+
+        case 5:
+            b.adauga_carte_manual();
+            break;
+
+        case 6:
+            b.sterge_carte_manual();
             break;
 
         case 0:

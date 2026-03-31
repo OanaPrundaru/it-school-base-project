@@ -18,7 +18,11 @@ private:
 
 public:
     void Adauga_carte(const std::string &titlu, const std::string &Autor, const std::string &ISBN);
+    void adauga_carte_manual();
+    void sterge_carte_manual();
+
     void Adauga_persoana(int ID, const std::string &Nume);
+    void adauga_persoana_manual();
 
     bool proceseaza_imprumut(int ID, const std::string &ISBN);
     bool proceseaza_returnare(int ID, const std::string &ISBN);
