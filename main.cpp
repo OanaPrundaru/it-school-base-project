@@ -5,19 +5,10 @@
 #include <stdio.h>
 #include "Biblioteca.h"
 
-int main(int argc, char *argv[])
+int main()
 {
-
- std::string pathCarti, pathMembri;
-
-    if (argc >= 3) {
-        pathCarti = argv[1];
-        pathMembri = argv[2];
-    } else {
-        std::cout << "Atentie: Nu au fost date argumente. Folosesc fisierele implicite.\n";
-        pathCarti = "Carti.csv"; 
-        pathMembri = "Membri.csv";
-    }
+    std::string pathCarti = "../../Carti.csv"; 
+    std::string pathMembri = "../../Membri.csv";
     Biblioteca b;
 
     std::cout << "Incarcare date din fisierele CSV ! >" << std::endl;
