@@ -23,10 +23,11 @@ int main()
         std::cout << " 1. Afiseaza toate cartile\n";
         std::cout << " 2. Afiseaza toti membrii \n";
         std::cout << " 3. Imprumuta o carte \n";
-        std::cout << " 4. Afiseaza carti disponibile\n";
-        std::cout << " 5. Adauga carti manual\n";
-        std::cout << " 6. Sterge carti manual\n";
-        std::cout << " 7. Adauga membri manual\n";
+        std::cout << " 4. Returneaza o carte \n";
+        std::cout << " 5. Afiseaza carti disponibile\n";
+        std::cout << " 6. Adauga carti manual\n";
+        std::cout << " 7. Sterge carti manual\n";
+        std::cout << " 8. Adauga membri manual\n";
         std::cout << " 0. Iesire\n";
         std::cout << " Alege o optiune: \n";
         std::cin >> optiune;
@@ -57,18 +58,21 @@ int main()
         }
 
         case 4:
-            b.afiseaza_carti_disponibile();
-            break;
+            b.returneaza_carte(pathCarti);
 
         case 5:
-            b.adauga_carte_manual();
+            b.afiseaza_carti_disponibile(pathCarti);
             break;
 
         case 6:
-            b.sterge_carte_manual();
+            b.adauga_carte_manual();
             break;
 
         case 7:
+            b.sterge_carte_manual();
+            break;
+
+        case 8:
             b.adauga_persoana_manual();
             break;
 

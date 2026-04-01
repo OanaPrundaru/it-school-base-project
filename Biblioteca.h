@@ -25,7 +25,7 @@ public:
     void adauga_persoana_manual();
 
     bool proceseaza_imprumut(int ID, const std::string &ISBN);
-    bool proceseaza_returnare(int ID, const std::string &ISBN);
+    bool proceseaza_returnare();
 
     void afiseaza_toate_cartile() const;
     void afiseaza_toti_membrii() const;
@@ -37,11 +37,12 @@ public:
     void incarcaMembri(const std::string &numeFisier);
 
     void Imprumuta_carte(int ID, const std::string &ISBN);
+    void returneaza_carte(const std::string &numeFisier);
 
     void salveaza_carti(const std::string &numeFisier);
     void salveaza_membri(const std::string &numeFisier);
 
-    void afiseaza_carti_disponibile();
+    void afiseaza_carti_disponibile(const std::string &numeFisier);
 };
 
 #endif

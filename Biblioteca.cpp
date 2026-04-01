@@ -242,6 +242,28 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
     }
 }
 
+void Biblioteca::returneaza_carte(const std::string &numeFisier)
+{
+    std::string isbn_carte;
+    std::cout << "Introduceti ISBN-UL cartii de returnat : \n";
+    std::cin >> isbn_carte;
+
+    bool gasit = false;
+    for (auto &c : Inventar_Carti)
+    {
+        if (c->getISBN() == isbn_carte)
+        {
+           gasit = true;
+            c->setImprumutata(false);
+            std::cout << "Cartea a fost returnata! " << std::endl;
+            break;
+        }
+    }
+        if(gasit){
+            salveaza_carti(numeFisier);
+    }
+}
+
 void Biblioteca::salveaza_carti(const std::string &numeFisier)
 {
     std::ofstream f(numeFisier);
@@ -268,7 +290,7 @@ void Biblioteca::salveaza_membri(const std::string &numeFisier)
     }
 }
 
-void Biblioteca::afiseaza_carti_disponibile(){
+void Biblioteca::afiseaza_carti_disponibile(const std::string &numeFisier){
     std::cout << "\n Cartile disponibile pentru imprumut sunt: \n";
     bool gasit = false;
 
