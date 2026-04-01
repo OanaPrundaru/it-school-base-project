@@ -2,16 +2,28 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <stdio.h>
 #include "Biblioteca.h"
 
-int main()
+int main(int argc, char *argv[])
 {
+
+ std::string pathCarti, pathMembri;
+
+    if (argc >= 3) {
+        pathCarti = argv[1];
+        pathMembri = argv[2];
+    } else {
+        std::cout << "Atentie: Nu au fost date argumente. Folosesc fisierele implicite.\n";
+        pathCarti = "Carti.csv"; 
+        pathMembri = "Membri.csv";
+    }
     Biblioteca b;
 
     std::cout << "Incarcare date din fisierele CSV ! >" << std::endl;
 
-    b.incarcaCarti("Carti.csv");
-    b.incarcaMembri("Membri.csv");
+    b.incarcaCarti(pathCarti);
+    b.incarcaMembri(pathMembri);
 
     int optiune;
     while (true)
@@ -70,8 +82,8 @@ int main()
             break;
 
         case 0:
-            b.salveaza_carti("Carti.csv");
-            b.salveaza_membri("Membri.csv");
+            b.salveaza_carti(pathCarti);
+            b.salveaza_membri(pathMembri);
             std::cout << "Date salvate. La reverdere!\n";
             exit(-1);
 
