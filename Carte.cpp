@@ -12,6 +12,9 @@ bool Carte::statusImprumut() const { return Este_imprumutata; }
 void Carte::setImprumutata(bool status)
 {
     Este_imprumutata = status;
+        if(!status) {
+            dataLimita = " ";
+        }
 }
 
 void Carte::afisareDetalii() const

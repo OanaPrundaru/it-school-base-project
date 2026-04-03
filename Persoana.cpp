@@ -11,10 +11,10 @@ std::string Persoana::getNume() const { return Nume; }
 
 void Persoana::Adauga_carte(Carte *Carte)
 {
-    if (Carte != nullptr)
-    {
-        Carti_imprumutate.push_back(Carte);
-    }
+    if(Carte == nullptr){
+        std::cout << "Cartea nu este valida!\n";
+        return;
+    }   
 }
 
 void Persoana::returneaza_Carte(const std::string &ISBN)

@@ -2,6 +2,18 @@
 #include "Persoana.h"
 #include "Carte.h"
 #include <iostream>
+#include <ctime>
+#include <iomanip>
+
+
+std::string calculeazaDataLimita(int zileDeImprumut = 14){
+    std::time_t t = std::time(nullptr);
+    t +=zileDeImprumut * 24 * 60 * 60;
+    std::tm* acum = std::localtime(&t);
+    std::stringstream ss;
+    ss << std::put_time(acum, "%d-%m-%Y");
+    return ss.str();
+};
 
 void Biblioteca::Adauga_carte(const std::string &Titlu, const std::string &Autor, const std::string &ISBN)
 {
@@ -228,8 +240,11 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
         {
             carteGasita->setImprumutata(true);
             persoanaGasita->Adauga_carte(carteGasita);
+            std::string dataScadenta = calculeazaDataLimita(14);
+            carteGasita->setDataLimita(dataScadenta);
             std::cout << "SUCCES!" << std::endl;
-            std::cout << "Membrul: " << idPersoana << " a imprumtat cartea: " << carteGasita->getTitlu() << std::endl;
+            std::cout << "Membrul: " << idPersoana << " a imprumutat cartea: " << carteGasita->getTitlu() << std::endl;
+            std::cout << "Cartea trebuie returnata pana la data de: \n" << carteGasita->getDataLimita() << std::endl;
         }
         else
         {
@@ -296,8 +311,8 @@ void Biblioteca::afiseaza_carti_disponibile(const std::string &numeFisier){
 
     for(auto& c:Inventar_Carti){
         if(c->statusImprumut() == false){
-            std::cout << "ISBN: " << c->getISBN() << "Titlu: " << c->getTitlu() << " Autor: " 
-            << c->getAutor() << std::endl;
+            std::cout << "ISBN: " << c->getISBN() << "| Titlu: " << c->getTitlu() << " |Autor: " 
+            << c->getAutor() << " |Data limita: " << c->getDataLimita() << std::endl;
             gasit = true;
         }
     }

@@ -10,6 +10,7 @@ private:
     std::string Autor;
     std::string ISBN;
     bool Este_imprumutata;
+    std::string dataLimita = " ";
 
 public:
     Carte(std::string Titlu, std::string Autor, std::string ISBN);
@@ -18,9 +19,13 @@ public:
     std::string getAutor() const;
     std::string getISBN() const;
     bool statusImprumut() const;
-
-    void setImprumutata(bool status);
+    
+    
+   
     void afisareDetalii() const;
+    void setDataLimita(std::string data) {dataLimita = data;}
+    std::string getDataLimita() const {return dataLimita;}
+    void setImprumutata(bool status);
 };
 
 #endif

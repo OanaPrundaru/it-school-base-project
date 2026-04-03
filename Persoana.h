@@ -15,6 +15,7 @@ private:
 
 public:
     Persoana(int ID, std::string Nume);
+    
     int getID() const;
     std::string getNume() const;
 
@@ -22,5 +23,4 @@ public:
     void returneaza_Carte(const std::string &ISBN);
     void afisare_Activitate() const;
 };
-
 #endif
