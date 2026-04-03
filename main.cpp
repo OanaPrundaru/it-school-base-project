@@ -11,8 +11,6 @@ int main()
     std::string pathMembri = "../../Membri.csv";
     Biblioteca b;
 
-    std::cout << "Incarcare date din fisierele CSV ! >" << std::endl;
-
     b.incarcaCarti(pathCarti);
     b.incarcaMembri(pathMembri);
 

@@ -57,7 +57,7 @@ void Biblioteca::sterge_carte_manual(){
 void Biblioteca::Adauga_persoana(int ID, const std::string &Nume)
 {
     Lista_Membri.push_back(std::make_unique<Persoana>(ID, Nume));
-    std::cout << "Persoana '" << Nume << "' (ID: " << ID << ") a fost inregistrata.\n";
+    // std::cout << "Persoana '" << Nume << "' (ID: " << ID << ") a fost inregistrata.\n";
 }
 void Biblioteca::adauga_persoana_manual(){
     std::string Nume;
@@ -122,11 +122,9 @@ void Biblioteca::afiseaza_toate_cartile() const
     std::cout << "\n--- Listă cărți--- \n";
     for (const auto& c : Inventar_Carti)
     {
-        std::cout << "ISBN: " << c->getISBN() << "|Titlu: " << c->getTitlu()
-        <<"|Autor: "<< c->getAutor() << "|Status: " << (c->statusImprumut()? 
-        "Imprumutata" : "Disponibila") << std::endl;
         c->afisareDetalii();
     }
+    
 }
 
 void Biblioteca::afiseaza_toti_membrii() const
@@ -176,7 +174,6 @@ void Biblioteca::incarcaCarti(const std::string &numeFisier)
         }
     }
     file.close();
-    std::cout << "Carti incarcate cu succes!" << std::endl;
 }
 
 void Biblioteca::incarcaMembri(const std::string &numeFisier)
@@ -208,8 +205,7 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
             }
         }
     file.close();
-    std::cout << "Membri incarcati: " << Lista_Membri.size() << std::endl;
-
+   
 }
 
 void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
@@ -239,11 +235,11 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
         if (!carteGasita->statusImprumut())
         {
             carteGasita->setImprumutata(true);
-            persoanaGasita->Adauga_carte(carteGasita);
+            carteGasita->setNumePersoana(persoanaGasita->getNume());
             std::string dataScadenta = calculeazaDataLimita(14);
             carteGasita->setDataLimita(dataScadenta);
             std::cout << "SUCCES!" << std::endl;
-            std::cout << "Membrul: " << idPersoana << " a imprumutat cartea: " << carteGasita->getTitlu() << std::endl;
+            std::cout << persoanaGasita->getNume() << " a imprumutat cartea: " << carteGasita->getTitlu() << std::endl;
             std::cout << "Cartea trebuie returnata pana la data de: \n" << carteGasita->getDataLimita() << std::endl;
         }
         else
@@ -286,7 +282,8 @@ void Biblioteca::salveaza_carti(const std::string &numeFisier)
     {
         for (auto &c : Inventar_Carti)
         {
-            f << c->getISBN() << "," << c->getTitlu() << "," << c->getAutor() << "," << (c->statusImprumut() ? "1" : "0") << "\n";
+            f << c->getISBN() << "," << c->getTitlu() << "," << c->getAutor() << "," << (c->statusImprumut() ? "1" : "0")
+            <<"," << c->getNumePerosana()<< "," << c->getDataLimita()<< std::endl;
         }
         f.close();
     }
@@ -312,7 +309,7 @@ void Biblioteca::afiseaza_carti_disponibile(const std::string &numeFisier){
     for(auto& c:Inventar_Carti){
         if(c->statusImprumut() == false){
             std::cout << "ISBN: " << c->getISBN() << "| Titlu: " << c->getTitlu() << " |Autor: " 
-            << c->getAutor() << " |Data limita: " << c->getDataLimita() << std::endl;
+            << c->getAutor()<< std::endl;
             gasit = true;
         }
     }
