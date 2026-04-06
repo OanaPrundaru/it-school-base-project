@@ -36,7 +36,7 @@ Aplicația pune accent pe utilizarea conceptelor moderne de Programare Orientat�
 *Interfața interactivă de navigare a aplicației.*
 
 ### Procesul de Împrumut și Calculul Datei
-![Împrumut_Carte](screenschot-uri/imprumut carte.png)
+![Împrumut_Carte](screenschot-uri/imprumut_carte.png)
 *Exemplu de împrumut reușit cu afișarea numelui și a datei limită.*
 
 ### Lista de Inventar
