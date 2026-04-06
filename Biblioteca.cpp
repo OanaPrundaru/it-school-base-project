@@ -205,7 +205,15 @@ void Biblioteca::incarcaMembri(const std::string &numeFisier)
             }
         }
     file.close();
-   
+}
+
+void Biblioteca::salveaza_Imprumuturi_in_fisier(std::string Nume, std::string Titlu, std::string Data){
+    std::ofstream file("../../Imprumuturi.csv", std::ios::app);
+
+    if(file.is_open()){
+        file << Nume << "," << Titlu << "," << Data << "\n";
+        file.close();
+    }
 }
 
 void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
@@ -238,6 +246,7 @@ void Biblioteca::Imprumuta_carte(int idPersoana, const std::string &isbnCarte)
             carteGasita->setNumePersoana(persoanaGasita->getNume());
             std::string dataScadenta = calculeazaDataLimita(14);
             carteGasita->setDataLimita(dataScadenta);
+            salveaza_Imprumuturi_in_fisier(persoanaGasita->getNume(), carteGasita->getTitlu(), dataScadenta);
             std::cout << "SUCCES!" << std::endl;
             std::cout << persoanaGasita->getNume() << " a imprumutat cartea: " << carteGasita->getTitlu() << std::endl;
             std::cout << "Cartea trebuie returnata pana la data de: \n" << carteGasita->getDataLimita() << std::endl;
@@ -316,4 +325,24 @@ void Biblioteca::afiseaza_carti_disponibile(const std::string &numeFisier){
     if(!gasit){
         std::cout << " Ne pare rau, nu avem carti disponibile!" << std::endl;
     }
+}
+
+void Biblioteca::afiseaza_istoric_imprumuturi() const{
+    std::ifstream file("../../Imprumuturi.csv");
+    std::string linie;
+    std::cout << "  Istoric imprumuturi  \n";
+    if(!file.is_open()){
+        std::cout <<" Nu exista istoric inregistrat! \n";
+        return;
+    }
+
+    while(std::getline(file, linie)){
+        std::stringstream ss(linie);
+        std::string Nume, Titlu, Data;
+        std::getline(ss, Nume, ',');
+        std::getline(ss, Titlu, ',');
+        std::getline(ss, Data);
+        std::cout << std::left << std::setw(20) << Nume << std::setw(40) << Titlu << Data <<std::endl;
+    }
+    file.close();
 }

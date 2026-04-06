@@ -43,6 +43,8 @@ public:
     void salveaza_membri(const std::string &numeFisier);
 
     void afiseaza_carti_disponibile(const std::string &numeFisier);
+    void salveaza_Imprumuturi_in_fisier(std::string Nume, std::string Titlu, std::string Data);
+    void afiseaza_istoric_imprumuturi() const;
 };
 
 #endif
