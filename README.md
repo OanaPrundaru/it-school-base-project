@@ -32,39 +32,46 @@ Aplicația pune accent pe utilizarea conceptelor moderne de Programare Orientat�
 ## 📸 Screenshot-uri
 
 ### Meniul Principal
-![Meniu Principal](meniu.png)
+![<img width="772" height="475" alt="meniu" src="https://github.com/user-attachments/assets/2fb422fc-d0e9-4f17-8d98-4c1ac19f15ee" />
+](meniu.png)
 *Interfața interactivă de navigare a aplicației.*
 
 ### Procesul de Împrumut și Calculul Datei
-![Împrumut Carte](imprumut carte.png)
+![<img width="702" height="369" alt="imprumut carte" src="https://github.com/user-attachments/assets/067ac95d-4c8f-4eaf-b62f-8545b76cc3d9" />
+](imprumut carte.png)
 *Exemplu de împrumut reușit cu afișarea numelui și a datei limită.*
 
 ### Lista de Inventar
-![Lista Carti](afisare_istoric_imprumuturi_in_consola.png)
+![<img width="1111" height="716" alt="lista_carti" src="https://github.com/user-attachments/assets/7019c388-76c6-4423-9fc2-b1aaebd67ac0" />
+](afisare_istoric_imprumuturi_in_consola.png)
 *Afișarea tabelară a cărților folosind formatare precisă.*
 
 ### Istoricul Împrumuturilor (Din fișier separat)
-![Istoric](afisare_istoric_imprumuturi_in_fisier.png)
+![<img width="1268" height="715" alt="afisare_imprumuturi_in_fisier" src="https://github.com/user-attachments/assets/09a3864a-856a-4ed1-81b1-1221be6c96ac" />]
+(afisare_istoric_imprumuturi_in_fisier.png)
 *Vizualizarea jurnalului de activitate stocat în Imprumuturi.csv.*
 
 ### Afișare disponibilitate cărți
-![salveaza_carte](afisare_in_consola_carti_disponibile.png)
+![<img width="939" height="596" alt="afisare_in_consola_carti_disponibile" src="https://github.com/user-attachments/assets/2fc4a20c-5ca7-4853-a2a4-7b4e142380bd" />](afisare_in_consola_carti_disponibile.png)
 *Vizualizarea în consolă a cărților disponibile.*
 
 ### Afișare automata eroare disponibilitate cărți
-![Lista Carti](afisare_eroare_disponibilitate_carti.png)
+![<img width="1078" height="676" alt="afisare_eroare_disponibilitate" src="https://github.com/user-attachments/assets/3e694e90-961e-4675-b2c6-d4d3d25ec2df" />]
+(afisare_eroare_disponibilitate_carti.png)
 *Primirea notificării "Cartea este deja împrumutată!", citind statusul din Carti.csv.*
 
 ### Schimbare automat status cărți
-![Lista Carti](schimbare_automat_status_carte.png)
+![<img width="741" height="853" alt="schimbare_automat_status_carte" src="https://github.com/user-attachments/assets/32153328-0f5f-4fac-8299-4037b0e454f1" />
+](schimbare_automat_status_carte.png)
 *Vizualizarea în fișierul Carti.csv a statusului 0 sau 1.*
 
 ### Afișare lista cărților din bibliotecă
-![Lista Carti](lista_carti.png)
+![<img width="1111" height="716" alt="lista_carti" src="https://github.com/user-attachments/assets/b602561d-aed3-40ea-97bc-3723d9227374" />
+](lista_carti.png)
 *Afișarea în consolă a tuturor cărților din bibliotecă.*
 
 ### Afișare lista membrilor
-![Lista membri](lista_persoane.png)
+![<img width="520" height="676" alt="lista_persoane" src="https://github.com/user-attachments/assets/d718bf7a-fdce-4e89-af7b-e30bff1906f8" />](lista_persoane.png)
 *Afișarea în consolă a tuturor membrilor înscriși în bibliotecă.*
 
 
