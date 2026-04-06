@@ -133,7 +133,7 @@ void Biblioteca::afiseaza_toti_membrii() const
     for (const auto &p : Lista_Membri)
     {   
         std::cout << "ID: " <<p->getID() << "|Nume: "<< p->getNume() << std::endl;
-        p->afisare_Activitate();
+        
     }
 }
 
@@ -291,8 +291,8 @@ void Biblioteca::salveaza_carti(const std::string &numeFisier)
     {
         for (auto &c : Inventar_Carti)
         {
-            f << c->getISBN() << "," << c->getTitlu() << "," << c->getAutor() << "," << (c->statusImprumut() ? "1" : "0")
-            <<"," << c->getNumePerosana()<< "," << c->getDataLimita()<< std::endl;
+            f << c->getISBN() << "," << c->getTitlu() << "," << c->getAutor() << "," << 
+            (c->statusImprumut() ? "1" : "0") << std::endl;
         }
         f.close();
     }
@@ -317,7 +317,7 @@ void Biblioteca::afiseaza_carti_disponibile(const std::string &numeFisier){
 
     for(auto& c:Inventar_Carti){
         if(c->statusImprumut() == false){
-            std::cout << "ISBN: " << c->getISBN() << "| Titlu: " << c->getTitlu() << " |Autor: " 
+            std::cout << "ISBN: " << c->getISBN() << "| Titlu: " << c->getTitlu() << " |  Autor: " 
             << c->getAutor()<< std::endl;
             gasit = true;
         }

@@ -17,6 +17,7 @@ private:
     std::vector<std::unique_ptr<Persoana>> Lista_Membri;
 
 public:
+  
     void Adauga_carte(const std::string &titlu, const std::string &Autor, const std::string &ISBN);
     void adauga_carte_manual();
     void sterge_carte_manual();
