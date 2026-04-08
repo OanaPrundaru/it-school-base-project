@@ -21,7 +21,5 @@ void Carte::afisareDetalii() const
 {
     std::cout << " |ISBN: "<< ISBN<< " |Titlu: " << Titlu << " |Autor: " << Autor  << " |Status: " 
     << (Este_imprumutata ? " Împrumutată " : " Disponibilă ") << std::endl;
-    if(Este_imprumutata){
-        std::cout << "De catre: " << numePersoana << "|Data scadenta: " << dataLimita << std::endl;
-    }
+  
 }
